@@ -1,10 +1,10 @@
 # Poderia ter outros nomes como: node.dockerfile, se vc tivesse vários Dockerfiles
-FROM node:latest
-MAINTAINER Luciano Cordeiro
-ENV NODE_ENV=production
-ENV PORT=3000
-COPY . /var/www
-WORKDIR /var/www
+FROM node:14
+LABEL maintainer="Luciano Cordeiro-lacsousa@gmail.com"
+WORKDIR /app-node
+ARG PORT=6000
+ENV PORT=$PORT
+EXPOSE $PORT
+COPY . .
 RUN npm install
 ENTRYPOINT npm start
-EXPOSE $PORT
